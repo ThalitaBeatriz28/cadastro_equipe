@@ -6,3 +6,15 @@ def cadastro():
             break
         else:
             print("\nDigite APENAS texto!")
+
+    while True:
+        try:
+            valor = float(input("Digite o valor unitário: ").strip().replace("," , "."))
+            if valor < 0:
+                print("Digite apenas valores positivos e válidos")
+            else:
+                break
+        except ValueError:
+            print("Digite apenas números")
+
+
