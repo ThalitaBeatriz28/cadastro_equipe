@@ -1,5 +1,6 @@
 def cadastroPROD():
-    print("\nRegistro do produto:")
+    print("\nRegistro do produto\n")
+
     while True:
         produto = input("Digite o nome do produto: ").strip().title()
         if produto == "":
