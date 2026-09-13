@@ -1,3 +1,4 @@
+clientes = [] 
 def cadastro_cliente():
     while True:
             nome = input("Digite o nome: ").strip().title()
@@ -12,7 +13,7 @@ def cadastro_cliente():
         
         email = input("Digite o email: ")
         
-        if email != "" and email.endswith("@gmail.com") and len(email) > 10 and "-" not in email:
+        if email != "" and email.endswith("@gmail.com") and " " not in email and len(email) > 10 and "-" not in email:
             break
         else:
             print("\nDigite um e-mail válido!!\n")
@@ -27,9 +28,26 @@ def cadastro_cliente():
                 else:
                     print("Erro: digite um número de telefone")
                 
-        
-                 
+    cliente = {
+        "nome": nome,
+        "email": email,
+        "telefone": telefone_certo
+    }
 
-cadastro_cliente()
+    clientes.append(cliente)
+    print("\n Cliente cadastrado com sucesso!!\n")
+
+def listagem_cliente():
+    if not clientes:
+        print("\n Nenhum cliente cadastrado.\n")
+        
+    else:
+    
+        for cliente in clientes:
+            print(f"Nome: {cliente["nome"]} | E-mail: {cliente["email"]} | Telefone: {cliente["telefone"]}\n")  
+
+                  
+
+
 
          
