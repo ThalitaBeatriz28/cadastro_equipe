@@ -1,9 +1,8 @@
-import os     
 def cadastroPROD():
     try:
         with open ("dados_prod.txt", "x", encoding="UTF-8") as arquivo:
             pass
-    except:
+    except FileExistsError:
         pass
     
     print("\nRegistro do produto\n")
@@ -20,7 +19,7 @@ def cadastroPROD():
     while True:
         try:
             valor = float(input("Digite o valor unitário: ").strip().replace("," , "."))
-            if valor < 0:
+            if valor <= 0:
                 print("\nDigite apenas valores positivos e válidos\n")
             else:
                 break
@@ -30,8 +29,8 @@ def cadastroPROD():
     while True:
         try:
             quantidade = int(input("Digite a quantidade: ").strip())
-            if quantidade < 0:
-                print("\nDigite apenas quantidades válidos\n")
+            if quantidade <= 0:
+                print("\nDigite apenas quantidades válidas\n")
             else:
                 break
         except ValueError:
@@ -42,9 +41,5 @@ def cadastroPROD():
             arquivo.write(f"{nome_prod};{valor:.2f};{quantidade}\n")
             
         print ("\nProduto cadastrado com sucesso!\n")
-    except:
-        print ("ERRO")
-
-
-cadastroPROD()
-
+    except OSError:
+        print("Erro ao salvar o produto.")
