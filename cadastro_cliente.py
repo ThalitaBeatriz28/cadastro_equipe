@@ -15,9 +15,7 @@ def cadastro_cliente():
             print(Fore.RED +"\nDigite somente texto!!\n"+ Style.RESET_ALL)
                 
     while True:
-         
         email = input("Digite o Email(Gmail): ")
-        
         if email != "" and email.isascii() and email.endswith("@gmail.com") and " " not in email and len(email) > 10 and "-" not in email:
             break
         else:
@@ -37,14 +35,9 @@ def cadastro_cliente():
             "telefone": telefone_certo
         }
     clientes.append(cliente)
-    print( Fore.LIGHTGREEN_EX + "\n Cliente cadastrado com sucesso!!\n"+ Style.RESET_ALL)
+    
+    with open("clientes.txt", "a", encoding="utf-8") as arquivo:
+        arquivo.write(f"Nome: {cliente['nome']} | E-mail: {cliente['email']} | Telefone: {cliente['telefone']}\n")
+    
+    print(Fore.LIGHTGREEN_EX + "\n Cliente cadastrado com sucesso e salvo em TXT!!\n"+ Style.RESET_ALL)
 
-def listagem_cliente():
-    if not clientes:
-        print(Fore.YELLOW +"\n Nenhum cliente cadastrado.\n"+ Style.RESET_ALL)
-        
-    else:
-        
-        print("----LISTA CLIENTES----")
-        for cliente in clientes:
-            print(f"Nome: {cliente['nome']} | E-mail: {cliente['email']} | Telefone: {cliente['telefone']}\n")
